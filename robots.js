@@ -1,6 +1,5 @@
 // Robots!
 
-
 var robots = [];
 var curStep = 0;
 var moveSeq = "";
@@ -20,16 +19,9 @@ function Robot(id, x, y)
 	this.y = y;
 }
 
-/* inputs: 
-      numRobots: int - number of robots
-	  moveSeq: string - sequence of move characters: <, >, ^, VV
-*/
+// initialize the simulation
 function createSimulation(numRobots, moveSeq)
 {
-	console.log("createSimulation");	
-	console.log("numRobots: " + numRobots.toString());	
-	console.log("moveSeq: " + moveSeq);	
-
 	if (numRobots<=0) return false;
 	
 	// create the origin	
@@ -61,6 +53,7 @@ function createSimulation(numRobots, moveSeq)
 	return true;
 }
 
+// move robot to new location
 function moveRobot(robot, newX, newY)
 {
 	// remove robot for old position
@@ -91,10 +84,9 @@ function moveRobot(robot, newX, newY)
 	robot.y = newY;
 }
 
+// execute next step
 function executeNextStep()
 {
-	console.log("executeNextStep");	
-	
 	if (curStep >= moveSeq.length) return false;
 	
 	// determine which robot to execute move on
@@ -136,10 +128,9 @@ function executeNextStep()
 	return true;
 }
 
+// return position of each robot
 function queryRobotPositions()
 {
-	console.log("queryRobotPositions");	
-	
 	var results = "";
 	for (var i=0; i<robots.length; i++)
 	{
@@ -148,11 +139,9 @@ function queryRobotPositions()
 	return results;
 }
 
+// return number of houses matching min filter condition
 function queryHouses(filterMinPresents)
 {
-	console.log("queryNumHouses");	
-	console.log("filterMinPresents: " + filterMinPresents.toString());	
-	
 	var houseCount = 0;
 	world.forEach(function(worldRow){
 		worldRow.forEach(function(worldPos){
@@ -163,15 +152,18 @@ function queryHouses(filterMinPresents)
 	return houseCount;
 }
 
+// return Total Number of Presents
 function queryTotalPresents()
 {
-	console.log("queryTotalPresents");	
+	// could have iterated over world positions to get this number too instead of maintaining it separately
+	// trade off between speed and maintaining info in 2 places
+	// if it was a big dataset and this was a frequently called method I would keep it this way in a separate var
 	return totalNumPresents;
 }
 
+// run entire simulation until done
 function runSimulation()
 {
-	console.log("runSimulation");
 	while (executeNextStep())
 	{
 	}
