@@ -1,9 +1,20 @@
 Robot Simulation
+================
 
-I wanted to do something with node.js for this project but I haven't worked with it before.  
-I did want to demonstrate that I can at least code in javascript so I put together a crude vanilla HTML interface to interact with my js functions to demo it.
-So, please excuse the awfulness of my crude GUI.  
-I'm keen to learn node.js and a modern frontend library such as React/Angular.
+
+
+GENERAL NOTES:
+I wanted to do something with node.js for this project but I haven't worked with it before and I wanted to get something done quicker for you to evaluate.  
+I wanted to demonstrate that I can code in javascript so I put together a crude vanilla HTML interface to interact with my js functions to demo it.
+So, please excuse the awfulness of my crude GUI.  I am keen to learn node.js and a modern frontend library such as React/Angular.
+
+
+
+HOW TO RUN:
+Just open the index.html and behold my fabulous GUI.
+Fairly self explanatory.  Separate button and inputs/outputs for the set of operations required to be supported.
+
+
 
 ASSUMPTIONS:
 - moving right means x coord increases
@@ -11,8 +22,54 @@ ASSUMPTIONS:
 - moving up means y coord increases
 - moving down means y coord decreases
 
+
+
+MAIN STRUCTURES:
+
+- array of Robots
+   - each Robot has: id and x,y coordinates
+   
+- the world: a HashMap of Rows of the World indexed by X coordinates
+   - each WorldRow is a HasmMap of WorldPos indexed by Y coordinates
+      - each WorldPos has: set of robots and a count of presents
+
+
+
+API:
+
+// initializes all the data structures
+// inputs:
+//    numRobots:int - number of robots to simulate
+//    moveSeq:string - the sequence of moves
+// returns true if successful; false if failure
+function createSimulation(numRobots, moveSeq)
+
+
+// execute next step in move sequence
+// returns true if successful; false if failure or if out of steps
+function executeNextStep()
+
+
+// return position of each robot
+// returns string representing each robots location on a separate row
+function queryRobotPositions()
+
+
+// returns int for number of houses matching min filter condition
+function queryHouses(filterMinPresents)
+
+
+// returns int for Total Number of Presents delivered
+function queryTotalPresents()
+
+
+// runs entire simulation until done
+// returns true if successful; false if failure
+function runSimulation()
+
+
+
 TODO list:
 - make a real interface...
-- remove console.log debug values
 - turn robots.js into Object so possible to manage multiple simulations at once
 - functions to return error codes instead of just true/false results
