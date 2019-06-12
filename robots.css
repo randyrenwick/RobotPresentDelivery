@@ -1,0 +1,27 @@
+div.inputsTitle {
+  text-indent: 25px;
+  padding-top: 5px;
+}
+
+div.inputs {
+  text-indent: 50px;
+  padding-top: 5px;
+}
+
+div.outputsTitle {
+  text-indent: 25px;
+  padding-top: 5px;
+}
+
+div.outputs {
+  text-indent: 50px;
+  padding-top: 5px;
+}
+
+div.func {
+  padding-top: 20px;
+}
+
+input.number {
+  width: 3em;
+}

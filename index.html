@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Robot Delivery!</title>
+	<link rel="stylesheet" type="text/css" href="robots.css">
+  </head>
+  <body>
+    <h1>Robot Present Delivery</h1>
+
+	<div class="func">
+		<button onclick="createSimulationResults.value = createSimulation(createSimulationNumRobots.value, createSimulationmoveSeq.value) ? 'success' : 'failure';">Create Simulation</button> 
+		<div class="inputsTitle">Inputs:
+			<div class="inputs"># of Robots: <input id="createSimulationNumRobots" class="number" type="number" min="0" value="1" /></div>
+			<div class="inputs">Move Sequence: <input id="createSimulationmoveSeq" type="text" value="^^VV<>" size="70" /></div>
+		</div>
+		<div class="outputsTitle">Results:
+			<span><input id="createSimulationResults" type="text" readonly="true" /></span>
+		</div>
+	</div>
+
+	<div class="func">
+		<button onclick="executeNextStepResults.value = executeNextStep() ? 'success' : 'failure';">Execute Next Step</button>
+		<div class="outputsTitle">Results: 
+			<span><input id="executeNextStepResults" type="text" readonly="true" /></span>
+		</div>
+	</div>
+
+	<div class="func">
+		<button onclick="robotPositions.value = queryRobotPositions();">Query Robot Positions</button> 
+		<div class="outputsTitle">Results:
+			<div class="outputs"><textarea id="robotPositions" rows="4" cols="10" readonly="true"></textarea>
+			</div>
+		</div>
+	</div>
+
+	<div class="func">
+		<button onclick="numberHouses.value = queryHouses(numPresentsFilter.value);">Query Houses</button> 
+		<div class="inputsTitle">Inputs:
+			<div class="inputs"># of Presents Filter: <input id="numPresentsFilter" class="number" type="number" min="1" value="1" maxlength="3" /></div>
+		</div>
+		<div class="outputsTitle">Results:
+			<span><input id="numberHouses" type="text" readonly="true" /></span>
+		</div>
+	</div>
+
+	<div class="func">
+		<button onclick="totalPresents.value = queryTotalPresents();">Query Total Presents</button> 
+		<div class="outputsTitle">Results:
+			<span><input id="totalPresents" type="text" readonly="true" /></span>
+		</div>
+	</div>
+
+	<div class="func">
+		<button onclick="runSimulationResults.value = runSimulation() ? 'success' : 'failure';">Run Simulation</button> 
+		<div class="outputsTitle">Results:
+			<span><input id="runSimulationResults" type="text" readonly="true" /></span>
+		</div>
+	</div>
+
+	<pre><code>
+         /_____\
+    ____[\`---'/]____
+   /\ #\ \_____/ /# /\
+  /  \# \_.---._/ #/  \
+ /   /|\  |   |  /|\   \
+/___/ | | |   | | | \___\
+|  |  | | |---| | |  |  |
+|__|  \_| |_#_| |_/  |__|
+//\\  <\ _//^\\_ />  //\\
+\||/  |\//// \\\\/|  \||/
+      |   |   |   |
+      |---|   |---|
+      |---|   |---|
+      |   |   |   |
+      |___|   |___|
+      /   \   /   \
+     |_____| |_____|
+     |HHHHH| |HHHHH|
+	</code></pre>
+	
+    <script src="./robots.js"></script>
+  </body>
+</html>

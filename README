@@ -1,0 +1,13 @@
+Robot Simulation
+
+I wanted to do something with node.js for this project but I haven't worked with it before.  
+I did want to demonstrate that I can at least code in javascript so I put together a crude vanilla HTML interface to interact with my js functions to demo it.
+So, please excuse the awfulness of my crude GUI.  
+I'm keen to learn node.js and a modern frontend library such as React/Angular.
+
+
+TODO list:
+- make a real interface...
+- remove console.log debug values
+- turn robots.js into Object so possible to manage multiple simulations at once
+- functions to return error codes instead of just true/false results
