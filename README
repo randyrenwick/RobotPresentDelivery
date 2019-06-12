@@ -5,6 +5,11 @@ I did want to demonstrate that I can at least code in javascript so I put togeth
 So, please excuse the awfulness of my crude GUI.  
 I'm keen to learn node.js and a modern frontend library such as React/Angular.
 
+ASSUMPTIONS:
+- moving right means x coord increases
+- moving left means x coord decreases
+- moving up means y coord increases
+- moving down means y coord decreases
 
 TODO list:
 - make a real interface...
