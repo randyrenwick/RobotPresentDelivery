@@ -7,11 +7,6 @@ var moveSeq = "";
 var world = new Map();
 var totalPresents = 0;
 
-function Coord(x, y)
-{
-	return x.toString() + "," + y.toString();
-}
-
 function WorldPos()
 {
 	this.robots = new Set();
@@ -42,7 +37,6 @@ function createSimulation(numRobots, moveSeq)
 	
 	// create the world and add origin to it
 	world = new Map();
-	world.set(Coord(0, 0), origin);
 	var originRow = new Map();	
 	world.set(0, originRow);
 	originRow.set(0, origin);
@@ -149,7 +143,7 @@ function queryRobotPositions()
 	var results = "";
 	for (var i=0; i<robots.length; i++)
 	{
-		results += (i>0 ? "\n" : "") + "robot" + i.toString() + ".pos=" + robots[i].x.toString() + ", " + robots[i].y.toString();
+		results += (i>0 ? "\n" : "") + "robot" + i.toString() + ".pos = " + robots[i].x.toString() + ", " + robots[i].y.toString();
 	}
 	return results;
 }
@@ -158,7 +152,15 @@ function queryHouses(filterMinPresents)
 {
 	console.log("queryNumHouses");	
 	console.log("filterMinPresents: " + filterMinPresents.toString());	
-	return moveSeq;
+	
+	var houseCount = 0;
+	world.forEach(function(worldRow){
+		worldRow.forEach(function(worldPos){
+			if (worldPos.presents >= filterMinPresents) houseCount++;
+		});
+	});
+	
+	return houseCount;
 }
 
 function queryTotalPresents()
