@@ -5,7 +5,7 @@ var robots = [];
 var curStep = 0;
 var moveSeq = "";
 var world = new Map();
-var totalPresents = 0;
+var totalNumPresents = 0;
 
 function WorldPos()
 {
@@ -54,7 +54,7 @@ function createSimulation(numRobots, moveSeq)
 		origin.robots.add(newRobot);
 	}
 	
-	totalPresents = 0;
+	totalNumPresents = 0;
 	curStep = 0;
 	this.moveSeq = moveSeq;
 	
@@ -82,7 +82,7 @@ function moveRobot(robot, newX, newY)
 	if (worldPos.robots.size==0) 
 	{
 		worldPos.presents++;
-		totalPresents++;
+		totalNumPresents++;
 	}
 	
 	// add robot to this position
@@ -166,12 +166,15 @@ function queryHouses(filterMinPresents)
 function queryTotalPresents()
 {
 	console.log("queryTotalPresents");	
-	return 0;
+	return totalNumPresents;
 }
 
 function runSimulation()
 {
 	console.log("runSimulation");
+	while (executeNextStep())
+	{
+	}
 	return true;
 }
 
