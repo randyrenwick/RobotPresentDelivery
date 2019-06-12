@@ -51,10 +51,10 @@ function createSimulation(numRobots, moveSeq)
 	robots = [];
 	for (var i=0; i<numRobots; i++)
 	{
-		var newRobot = new Robot(i);
+		var newRobot = new Robot(i, 0, 0);
 		
 		// add new robot to robot list
-		robots.push(i, origin);
+		robots.push(newRobot);
 		
 		// add new robot to origin
 		origin.robots.add(newRobot);
@@ -103,13 +103,16 @@ function executeNextStep()
 	
 	if (curStep >= moveSeq.length) return false;
 	
-	curStep++;	
 	// determine which robot to execute move on
 	var robotIndex = curStep % robots.length;
 	var robot = robots[robotIndex];
 	
 	// determine what the move is and validate it
 	var move = moveSeq[curStep];
+
+	// inrement step for next time (want to move on whether it succeeds or fails so we don't get stuck on one step)
+	curStep++;	
+
 	if (move==='^')
 	{
 		// move up
@@ -142,7 +145,13 @@ function executeNextStep()
 function queryRobotPositions()
 {
 	console.log("queryRobotPositions");	
-	return "test1\ntest2\ntest3\ntest4\ntest5\n";
+	
+	var results = "";
+	for (var i=0; i<robots.length; i++)
+	{
+		results += (i>0 ? "\n" : "") + "robot" + i.toString() + ".pos=" + robots[i].x.toString() + ", " + robots[i].y.toString();
+	}
+	return results;
 }
 
 function queryHouses(filterMinPresents)
