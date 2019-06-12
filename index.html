@@ -7,9 +7,19 @@
   </head>
   <body>
     <h1>Robot Present Delivery</h1>
-
+	<script>
+		function createSim()
+		{
+			createSimulationResults.value = createSimulation(createSimulationNumRobots.value, createSimulationmoveSeq.value) ? 'success' : 'failure';
+			executeNextStepResults.value = "";
+			robotPositions.value = "";
+			numberHouses.value = "";
+			totalPresents.value = "";
+			runSimulationResults.value = "";
+		}	
+	</script>
 	<div class="func">
-		<button onclick="createSimulationResults.value = createSimulation(createSimulationNumRobots.value, createSimulationmoveSeq.value) ? 'success' : 'failure';">Create Simulation</button> 
+		<button onclick="createSim();">Create Simulation</button> 
 		<div class="inputsTitle">Inputs:
 			<div class="inputs"># of Robots: <input id="createSimulationNumRobots" class="number" type="number" min="0" value="1" /></div>
 			<div class="inputs">Move Sequence: <input id="createSimulationmoveSeq" type="text" value="^^VV<>" size="70" /></div>
